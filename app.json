@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "danpa-movie",
+    "slug": "danpa-movie",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "danpa-movie"
+}
