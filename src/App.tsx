@@ -7,7 +7,6 @@ import { useFonts } from "expo-font";
 import { NavigationContainer } from "@react-navigation/native";
 import TabNavigation from "./view/navigation/TabNavagation/TabNavigation";
 import { Feather } from "@expo/vector-icons";
-import StackNavigation from "./view/navigation/TabNavagation/StackNavigation/StackNavigation";
 
 export default function App() {
     const [isLoading, setLoading] = useState(true);
@@ -29,9 +28,7 @@ export default function App() {
 
     return (
         <NavigationContainer>
-            {/* <TabNavigation />
-             */}
-            <StackNavigation />
+            <TabNavigation />
         </NavigationContainer>
     );
 }

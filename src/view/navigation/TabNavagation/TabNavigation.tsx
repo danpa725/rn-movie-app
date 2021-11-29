@@ -29,7 +29,10 @@ function TabNavigation() {
         >
             <Tab.Screen
                 name={ROUTE_NAME.HOME}
-                component={HomeScreen}
+                //! 방법1: 항상 텝이 하단에 렌더링 되는것이 단점.
+                //* Tab screen을 기본적으로 렌더링
+                //* 그 속, 한 탭에 Stack을 렌더링
+                component={StackNavigation}
                 options={
                     isLight
                         ? SCREEN_OPTIONS.home.light

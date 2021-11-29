@@ -1,10 +1,11 @@
+import React from "react";
+import { Text, View } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+
 import {
     createNativeStackNavigator,
     NativeStackScreenProps,
 } from "@react-navigation/native-stack";
-import React from "react";
-import { Text, View } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Stack = createNativeStackNavigator();
 
@@ -52,8 +53,20 @@ const ScreenThree = ({
 
 function StackNavigation() {
     return (
-        <Stack.Navigator>
-            <Stack.Screen name="ScreenOne" component={ScreenOne} />
+        <Stack.Navigator
+            //* screenOptions는 전체적으로 적용되는 값
+            screenOptions={{
+                animation: "fade",
+                //* stack에 자연스럽게 조화를 이루기 위함
+                headerShown: false,
+            }}
+        >
+            <Stack.Screen
+                name="ScreenOne"
+                component={ScreenOne}
+                //*options는 해당 컴포넌트에서만 적용되는 값
+                options={{}}
+            />
             <Stack.Screen name="ScreenTwo" component={ScreenTwo} />
             <Stack.Screen name="ScreenThree" component={ScreenThree} />
         </Stack.Navigator>
