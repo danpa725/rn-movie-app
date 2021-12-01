@@ -2,7 +2,7 @@ import React from "react";
 
 import { BottomTabNavigationOptions } from "@react-navigation/bottom-tabs";
 import { Feather } from "@expo/vector-icons";
-import pallete from "../../../utils/style/pallete";
+import pallete from "utils/style/pallete";
 
 //* 전체 navigation tap 스타일 설정
 interface NavigationOptions {
@@ -31,7 +31,6 @@ const NAVIGATION_OPTIONS: NavigationOptions = {
             borderBottomColor: pallete.yellow8,
             backgroundColor: pallete.gray2,
         },
-
         tabBarStyle: {
             ...COMMON_NAVIGATION_OPTIONS.tabBarStyle,
             backgroundColor: pallete.gray2,
@@ -41,7 +40,7 @@ const NAVIGATION_OPTIONS: NavigationOptions = {
             borderTopColor: pallete.gray3,
         },
         //* 아이콘의 색을 변경한다
-        tabBarActiveTintColor: pallete.yellow8,
+        tabBarActiveTintColor: pallete.blue10,
         tabBarInactiveTintColor: pallete.gray9,
     },
     dark: {
@@ -58,7 +57,7 @@ const NAVIGATION_OPTIONS: NavigationOptions = {
             backgroundColor: pallete.gray9,
         },
         //* 아이콘의 색을 변경한다
-        tabBarActiveTintColor: pallete.yellow5,
+        tabBarActiveTintColor: pallete.blue5,
         tabBarInactiveTintColor: pallete.gray6,
     },
 };

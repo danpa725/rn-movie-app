@@ -1,13 +1,11 @@
 import React from "react";
 
-import HomeScreen from "../../screen/Home/Home";
-import SettingScreen from "../../screen/Setting/Setting";
-import MovieScreen from "../../screen/Movie/Movie";
-
 import { NAVIGATION_OPTIONS, SCREEN_OPTIONS } from "./TabNavigation.style";
 import { useColorScheme } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import StackNavigation from "./StackNavigation/StackNavigation";
+import HomeScreen from "view/screen/Home/Home";
+import MovieScreen from "view/screen/Movie/Movie";
+import SettingScreen from "view/screen/Setting/Setting";
 
 const Tab = createBottomTabNavigator();
 
@@ -29,10 +27,7 @@ function TabNavigation() {
         >
             <Tab.Screen
                 name={ROUTE_NAME.HOME}
-                //! 방법1: 항상 텝이 하단에 렌더링 되는것이 단점.
-                //* Tab screen을 기본적으로 렌더링
-                //* 그 속, 한 탭에 Stack을 렌더링
-                component={StackNavigation}
+                component={HomeScreen}
                 options={
                     isLight
                         ? SCREEN_OPTIONS.home.light

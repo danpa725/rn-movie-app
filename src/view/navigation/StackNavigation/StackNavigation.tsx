@@ -1,29 +1,19 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-import {
-    createNativeStackNavigator,
-    NativeStackScreenProps,
-} from "@react-navigation/native-stack";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { RootNavigateProps } from "../RootNavigation/RootNavigation";
 
 const Stack = createNativeStackNavigator();
 
-type NavigateProps = NativeStackScreenProps<StackParamList, "ScreenOne">;
-
-type StackParamList = {
-    ScreenOne: undefined;
-    ScreenTwo: undefined;
-    ScreenThree: undefined;
-};
-
-const ScreenOne = ({ navigation: { navigate } }: NavigateProps) => (
+const ScreenOne = ({ navigation: { navigate } }: RootNavigateProps) => (
     <TouchableOpacity onPress={() => navigate("ScreenTwo")}>
         <Text>Screen Two</Text>
     </TouchableOpacity>
 );
 
-const ScreenTwo = ({ navigation: { navigate, goBack } }: NavigateProps) => (
+const ScreenTwo = ({ navigation: { navigate, goBack } }: RootNavigateProps) => (
     <>
         <TouchableOpacity onPress={() => navigate("ScreenThree")}>
             <Text>Screen Three</Text>
@@ -36,7 +26,7 @@ const ScreenTwo = ({ navigation: { navigate, goBack } }: NavigateProps) => (
 
 const ScreenThree = ({
     navigation: { navigate, setOptions },
-}: NavigateProps) => (
+}: RootNavigateProps) => (
     <>
         <TouchableOpacity onPress={() => navigate("ScreenOne")}>
             <Text>Screen One</Text>
@@ -57,7 +47,6 @@ function StackNavigation() {
             //* screenOptions는 전체적으로 적용되는 값
             screenOptions={{
                 animation: "fade",
-                //* stack에 자연스럽게 조화를 이루기 위함
                 headerShown: false,
             }}
         >
