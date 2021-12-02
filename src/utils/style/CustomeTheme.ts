@@ -2,38 +2,49 @@ import { DefaultTheme } from "styled-components";
 
 import pallete, { Pallete } from "./pallete";
 import width, { Width } from "./width";
+import fontSize, { FontSize } from "./font";
+import borderRadius, { BorderRadius } from "./borderRadius";
 
-export interface CommonThemeProperty extends Pallete, Width {}
+export interface CommonThemeProperty
+    extends Pallete,
+        Width,
+        FontSize,
+        BorderRadius {
+    fontSize: string;
+}
 
 const commonThemeProperty: CommonThemeProperty = {
-    //* width
     ...width,
-    //* color pallete
     ...pallete,
+    ...fontSize,
+    ...borderRadius,
+
+    //* common Theme property
+    fontSize: fontSize.md,
 };
 
 const lightTheme: DefaultTheme = {
     //* common
     ...commonThemeProperty,
 
-    borderRadius: "1.5",
     background: pallete.gray1,
     color: pallete.deepDark,
 
     borderWidth: commonThemeProperty.w1,
-    borderColor: pallete.gray7,
+    borderColor: pallete.gray3,
+    borderRadius: commonThemeProperty.bsm,
 };
 
 const darkTheme: DefaultTheme = {
     //* common
     ...commonThemeProperty,
 
-    borderRadius: "1.75",
     background: pallete.gray10,
     color: pallete.gray2,
 
     borderWidth: commonThemeProperty.w2,
-    borderColor: pallete.gray2,
+    borderColor: pallete.gray8,
+    borderRadius: commonThemeProperty.bmd,
 };
 
 export { darkTheme, lightTheme };

@@ -1,11 +1,21 @@
-const fontSize = {
-    xsm: '0.65rem',
-    sm: '0.75rem',
-    md: '0.85rem',
-    lg: '1rem',
-    xlg: '1.25rem',
-    xxlg: '1.5rem',
-    info: '2rem',
+export interface FontSize {
+    xsm: string;
+    sm: string;
+    md: string;
+    lg: string;
+    xlg: string;
+    xxlg: string;
+    info: string;
+}
+
+const fontSize: FontSize = {
+    xsm: "8px",
+    sm: "10px",
+    md: "12px",
+    lg: "14px",
+    xlg: "16px",
+    xxlg: "18px",
+    info: "20px",
 };
 
-export { fontSize };
+export default fontSize;
