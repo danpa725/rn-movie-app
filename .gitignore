@@ -54,5 +54,6 @@ buck-out/
 web-build/
 dist/
 
-# ENV
+# Env
 .env
+.env.production

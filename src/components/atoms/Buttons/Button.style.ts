@@ -1,17 +1,16 @@
+import { TEST_CONSTANT } from "@/constants/constant";
 import styled from "styled-components/native";
-import pallete from "utils/style/pallete";
 
-//!Important: styled-components 내부에 주석을 절대로 달지 말라.
+//!Important: styled-componentsr 내부에 주석을 절대로 달지 말라.
 const DefaultButtonStyle = {
     width: "100px",
     height: "35px",
 
     borderWidth: "1.5px",
-    borderColor: pallete.gray3,
     borderRadius: "1.5px",
 
-    fontSize: "10px",
-    fontWeight: "300",
+    fontSize: "400",
+    fontWeight: String(TEST_CONSTANT),
 };
 
 export interface ButtonContainerStyle {

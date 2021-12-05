@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./src",
+        "paths": {
+            "@/*": ["./*"],
+            "@tests/*": ["./__tests__/*"],
+            "@components/*": ["components/*"],
+            "@assets/*": ["assets/*"],
+            "@constants/*": ["constants/*"],
+            "@hooks/*": ["hooks/*"],
+            "@utils/*": ["utils/*"]
+        }
+    }
+}
