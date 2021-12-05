@@ -1,8 +1,8 @@
 import React from "react";
 import { View } from "react-native";
 
-function ScreenName() {
+function TvScreen() {
     return <View></View>;
 }
 
-export default ScreenName;
+export default TvScreen;
