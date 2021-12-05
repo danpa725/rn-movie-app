@@ -1,16 +1,20 @@
-import { DefaultTheme } from "styled-components";
+import { DefaultTheme } from "styled-components"
 
-import pallete, { Pallete } from "./pallete";
-import width, { Width } from "./width";
-import fontSize, { FontSize } from "./font";
-import borderRadius, { BorderRadius } from "./borderRadius";
+import pallete, { Pallete } from "./pallete"
+import width, { Width } from "./width"
+import fontSize, { FontSize } from "./font"
+import borderRadius, { BorderRadius } from "./borderRadius"
 
 export interface CommonThemeProperty
     extends Pallete,
         Width,
         FontSize,
         BorderRadius {
-    fontSize: string;
+    fontSize: string
+}
+
+export interface IsLightMode {
+    isLight: boolean
 }
 
 const commonThemeProperty: CommonThemeProperty = {
@@ -21,7 +25,7 @@ const commonThemeProperty: CommonThemeProperty = {
 
     //* common Theme property
     fontSize: fontSize.md,
-};
+}
 
 const lightTheme: DefaultTheme = {
     //* common
@@ -33,7 +37,7 @@ const lightTheme: DefaultTheme = {
     borderWidth: commonThemeProperty.w1,
     borderColor: pallete.gray3,
     borderRadius: commonThemeProperty.bsm,
-};
+}
 
 const darkTheme: DefaultTheme = {
     //* common
@@ -45,6 +49,6 @@ const darkTheme: DefaultTheme = {
     borderWidth: commonThemeProperty.w2,
     borderColor: pallete.gray8,
     borderRadius: commonThemeProperty.bmd,
-};
+}
 
-export { darkTheme, lightTheme };
+export { darkTheme, lightTheme }

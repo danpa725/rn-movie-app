@@ -9,6 +9,7 @@ import { darkTheme, lightTheme } from "@utils/style/CustomeTheme";
 
 import Tab from "./view/navigation/TabNavigation/Tab";
 import { NavigationContainer } from "@react-navigation/native";
+import useThemeMode from "@/hooks/useThemeMode";
 //===============================================r================================
 
 export default function App() {
@@ -17,7 +18,7 @@ export default function App() {
     const onLoadingFinish = () => setLoading(false);
     const startAsyncLoading = async () => {};
 
-    const isLight = useColorScheme() === "light";
+    const isLight = useThemeMode();
 
     if (isLoading)
         <AppLoading
