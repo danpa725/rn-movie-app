@@ -4,7 +4,6 @@ import Image from "@components/atoms/Image/Image"
 import TextCustome from "@components/atoms/Text/Text"
 import useThemeMode from "@/hooks/useThemeMode"
 
-import { MovieRate } from "../MovieSlider/MovieSlider.style"
 import { makeImagePath } from "../utils/getMovieData"
 import { TrendingMovieData } from "../utils/interface"
 

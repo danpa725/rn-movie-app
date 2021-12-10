@@ -12,10 +12,8 @@ import { MovieData } from "../utils/interface"
 import {
     MovieCard,
     MovieCardBackground,
-    MovieCardPoster,
     MovieDescirption,
     MovieDescriptionWrapper,
-    MovieRate,
     MovieTitle,
     MovieWrapper,
 } from "./MovieSlider.style"
@@ -24,6 +22,8 @@ import borderRadius from "@/utils/style/borderRadius"
 import Tag from "@/components/molecules/Tag/Tag"
 import { Ionicons } from "@expo/vector-icons"
 import pallete from "@/utils/style/pallete"
+import TextCustome from "@/components/atoms/Text/Text"
+import fontSize from "@/utils/style/font"
 
 interface MovieSliderProps {
     movieList: MovieData[]
@@ -58,11 +58,18 @@ function MovieSlider({ movieList }: MovieSliderProps) {
                     }) => (
                         <MovieCard key={id}>
                             {backdrop_path && (
-                                <MovieCardBackground
-                                    style={StyleSheet.absoluteFill}
-                                    source={{
-                                        uri: makeImagePath(backdrop_path),
-                                    }}
+                                <Image
+                                    width="100%"
+                                    height="100%"
+                                    uri={makeImagePath(backdrop_path)}
+                                />
+                            )}
+
+                            {!backdrop_path && poster_path && (
+                                <Image
+                                    width="100%"
+                                    height="100%"
+                                    uri={makeImagePath(poster_path)}
                                 />
                             )}
 
@@ -75,16 +82,23 @@ function MovieSlider({ movieList }: MovieSliderProps) {
                                     {poster_path && (
                                         <Image
                                             width="110px"
-                                            height="160px"
+                                            height="170px"
                                             borderRadius={borderRadius.bxlg}
                                             uri={makeImagePath(poster_path)}
                                         />
                                     )}
 
                                     <MovieDescriptionWrapper>
-                                        <MovieTitle>
+                                        <TextCustome
+                                            fontSize={fontSize.xxlg}
+                                            fontColor={pallete.gray2}
+                                            fontWeight={700}
+                                            customeStyle={{
+                                                marginBottom: 5,
+                                            }}
+                                        >
                                             {original_title}
-                                        </MovieTitle>
+                                        </TextCustome>
                                         <Tag
                                             isLight={isLight}
                                             fontSize="9px"
@@ -97,14 +111,24 @@ function MovieSlider({ movieList }: MovieSliderProps) {
                                             />{" "}
                                             {vote_average}
                                         </Tag>
-                                        <MovieDescirption isLight={isLight}>
+                                        <TextCustome
+                                            fontSize={fontSize.md}
+                                            fontColor={
+                                                isLight
+                                                    ? pallete.gray2
+                                                    : pallete.gray4
+                                            }
+                                            customeStyle={{
+                                                marginTop: 5,
+                                            }}
+                                        >
                                             {overview.length <= 170
                                                 ? overview
                                                 : `${overview.slice(
                                                       0,
                                                       170
                                                   )}...`}
-                                        </MovieDescirption>
+                                        </TextCustome>
                                     </MovieDescriptionWrapper>
                                 </MovieWrapper>
                             </BlurView>

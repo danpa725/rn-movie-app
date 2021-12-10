@@ -1,8 +1,10 @@
 import React from "react"
+import { StyleProp, TextStyle as RNTextStyle } from "react-native"
 import { TextStyled, TextStyle } from "./Text.style"
 
 interface TextCustimeProps extends TextStyle {
     children: any
+    customeStyle?: StyleProp<RNTextStyle>
 }
 
 function TextCustome({
@@ -10,12 +12,14 @@ function TextCustome({
     fontColor,
     fontWeight,
     children: innerText,
+    customeStyle,
 }: TextCustimeProps) {
     return (
         <TextStyled
             fontSize={fontSize}
             fontColor={fontColor}
             fontWeight={fontWeight}
+            style={customeStyle}
         >
             {innerText}
         </TextStyled>
