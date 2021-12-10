@@ -1,16 +1,15 @@
-import React, { ReactElement } from "react";
-import {
-    ButtonContainer,
-    ButtonContainerStyle,
-    ButtonInnerText,
-    ButtonInnerTextStyle,
-} from "./Button.style";
+import React, { ReactElement } from "react"
+import { StyleProp, ViewStyle } from "react-native"
+import TextCustome from "../../atoms/Text/Text"
+import { TextStyle } from "../../atoms/Text/Text.style"
+import { ButtonContainer, ButtonContainerStyle } from "./Button.style"
 
-interface ButtonProps extends ButtonContainerStyle, ButtonInnerTextStyle {
-    onPress?: () => void;
-    buttonText?: string;
-    activeOpacity?: number;
-    Icon?: ReactElement;
+interface ButtonProps extends ButtonContainerStyle, TextStyle {
+    onPress?: () => void
+    buttonText?: string
+    activeOpacity?: number
+    Icon?: ReactElement
+    customeStyle?: StyleProp<ViewStyle>
 }
 
 function ButtonCustome({
@@ -26,6 +25,7 @@ function ButtonCustome({
     fontWeight,
     activeOpacity,
     Icon,
+    customeStyle,
 }: ButtonProps) {
     return (
         <ButtonContainer
@@ -40,15 +40,16 @@ function ButtonCustome({
             borderWidth={borderWidth}
             //* touchableOpacity property
             activeOpacity={activeOpacity ? activeOpacity : 0.5}
+            style={customeStyle && customeStyle}
         >
             {buttonText && (
-                <ButtonInnerText fontSize={fontSize} fontWeight={fontWeight}>
+                <TextCustome fontSize={fontSize} fontWeight={fontWeight}>
                     {buttonText}
-                </ButtonInnerText>
+                </TextCustome>
             )}
             {Icon && Icon}
         </ButtonContainer>
-    );
+    )
 }
 
-export default ButtonCustome;
+export default ButtonCustome

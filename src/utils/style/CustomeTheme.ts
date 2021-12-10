@@ -13,7 +13,7 @@ export interface CommonThemeProperty
     fontSize: string
 }
 
-export interface IsLightMode {
+export interface ThemeMode {
     isLight: boolean
 }
 

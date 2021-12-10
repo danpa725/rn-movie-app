@@ -1,5 +1,4 @@
-import { TEST_CONSTANT } from "@/constants/constant";
-import styled from "styled-components/native";
+import styled from "styled-components/native"
 
 //!Important: styled-componentsr 내부에 주석을 절대로 달지 말라.
 const DefaultButtonStyle = {
@@ -8,20 +7,17 @@ const DefaultButtonStyle = {
 
     borderWidth: "1.5px",
     borderRadius: "1.5px",
-
-    fontSize: "400",
-    fontWeight: String(TEST_CONSTANT),
-};
+}
 
 export interface ButtonContainerStyle {
-    background?: string;
+    background?: string
 
-    width?: string;
-    height?: string;
+    width?: string
+    height?: string
 
-    borderWidth?: string;
-    borderColor?: string;
-    borderRadius?: string;
+    borderWidth?: string
+    borderColor?: string
+    borderRadius?: string
 }
 
 const ButtonContainer = styled.TouchableOpacity<ButtonContainerStyle>`
@@ -42,19 +38,6 @@ const ButtonContainer = styled.TouchableOpacity<ButtonContainerStyle>`
         borderColor ? borderColor : theme.borderColor};
     border-radius: ${({ borderRadius, theme }) =>
         borderRadius ? borderRadius : theme.borderRadius};
-`;
+`
 
-export interface ButtonInnerTextStyle {
-    fontSize?: string;
-    fontWeight?: string;
-}
-
-const ButtonInnerText = styled.Text<ButtonInnerTextStyle>`
-    color: ${({ theme }) => theme.color};
-    font-size: ${({ fontSize, theme }) =>
-        fontSize ? fontSize : DefaultButtonStyle.fontSize};
-    font-weight: ${({ fontWeight, theme }) =>
-        fontWeight ? fontWeight : DefaultButtonStyle.fontWeight};
-`;
-
-export { ButtonContainer, ButtonInnerText };
+export { ButtonContainer }

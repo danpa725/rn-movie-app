@@ -1,4 +1,4 @@
-import { IsLightMode } from "@/utils/style/CustomeTheme"
+import { ThemeMode } from "@/utils/style/CustomeTheme"
 import pallete from "@/utils/style/pallete"
 import styled from "styled-components/native"
 
@@ -42,14 +42,14 @@ const MovieTitle = styled.Text`
 
     margin-top: -2.5px;
 `
-const MovieDescirption = styled.Text<IsLightMode>`
+const MovieDescirption = styled.Text<ThemeMode>`
     font-size: 12px;
     color: ${({ isLight }) => (isLight ? pallete.gray1 : pallete.gray5)};
 
     margin-top: 10px;
 `
 
-const MovieRate = styled.Text<IsLightMode>`
+const MovieRate = styled.Text<ThemeMode>`
     width: 37px;
     padding: 2.5px;
     border-radius: ${(props) => props.theme.w3};

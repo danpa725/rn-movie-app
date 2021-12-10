@@ -1,26 +1,12 @@
-// @ts-nocheck
+//@ts-nocheck
 import borderRadius from "@/utils/style/borderRadius"
 import React from "react"
-import styled from "styled-components/native"
-
-const Images = styled.Image<ImageStyleProps>`
-    width: ${({ width }) => width};
-    height: ${({ height }) => height};
-
-    border-radius: ${({ borderRadius }) => borderRadius};
-`
-
-interface ImageStyleProps {
-    width: string
-    height: string
-    borderRadius: string
-}
-
-interface ImageProps extends ImageStyleProps {
+import { ImageStyle, ImageStyled } from "./Image.style"
+interface ImageProps extends ImageStyle {
     uri: string
 }
 
-const DEFAULT_PROPS: ImageStyleProps = {
+const DEFAULT_PROPS: ImageStyle = {
     width: "100px",
     height: "150px",
     borderRadius: borderRadius.bsm,
@@ -33,7 +19,7 @@ function Image({
     uri,
 }: ImageProps) {
     return (
-        <Images
+        <ImageStyled
             source={{ uri }}
             width={width}
             height={height}

@@ -21,6 +21,9 @@ import {
 } from "./MovieSlider.style"
 import Image from "@/components/atoms/Image/Image"
 import borderRadius from "@/utils/style/borderRadius"
+import Tag from "@/components/molecules/Tag/Tag"
+import { Ionicons } from "@expo/vector-icons"
+import pallete from "@/utils/style/pallete"
 
 interface MovieSliderProps {
     movieList: MovieData[]
@@ -82,11 +85,25 @@ function MovieSlider({ movieList }: MovieSliderProps) {
                                         <MovieTitle>
                                             {original_title}
                                         </MovieTitle>
-                                        <MovieRate isLight={isLight}>
-                                            ⭐ {vote_average}
-                                        </MovieRate>
+                                        <Tag
+                                            isLight={isLight}
+                                            fontSize="9px"
+                                            borderRadius="5px"
+                                        >
+                                            <Ionicons
+                                                name="star"
+                                                size={10}
+                                                color={pallete.yellow8}
+                                            />{" "}
+                                            {vote_average}
+                                        </Tag>
                                         <MovieDescirption isLight={isLight}>
-                                            {overview.slice(0, 150)}...
+                                            {overview.length <= 170
+                                                ? overview
+                                                : `${overview.slice(
+                                                      0,
+                                                      170
+                                                  )}...`}
                                         </MovieDescirption>
                                     </MovieDescriptionWrapper>
                                 </MovieWrapper>
