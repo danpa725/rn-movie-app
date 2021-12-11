@@ -25,17 +25,14 @@ function MovieScreen() {
 
     //* fetching data
     const fetchData = async () => {
-        const movieList = await Promise.resolve(getMovieList("now_playing"))
+        const [movieList, upcomingMovieList, trendingMovieList] =
+            await Promise.all([
+                getMovieList("now_playing"),
+                getMovieList("upcoming"),
+                getMovieList("trending"),
+            ])
         setMovieList(movieList)
-
-        const upcomingMovieList = await Promise.resolve(
-            getMovieList("upcoming")
-        )
         setUpcomingMovieList(upcomingMovieList)
-
-        const trendingMovieList = await Promise.resolve(
-            getMovieList("trending")
-        )
         setTrendingMovieList(trendingMovieList.slice(0, 9))
     }
 
