@@ -49,7 +49,7 @@ function MovieTrendingList({ trendingMovieList }: MovieListProps) {
                                 style={{ elevation: 10 }}
                                 isLight={isLight}
                             >
-                                <TextCustome fontSize="13px">
+                                <TextCustome fontSize="13px" fontWeight={700}>
                                     {title.length <= 27
                                         ? title
                                         : `${title.slice(0, 27)}...`}

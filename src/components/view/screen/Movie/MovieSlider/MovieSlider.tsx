@@ -11,12 +11,10 @@ import { MovieData } from "../utils/interface"
 
 import {
     MovieCard,
-    MovieCardBackground,
-    MovieDescirption,
     MovieDescriptionWrapper,
-    MovieTitle,
     MovieWrapper,
 } from "./MovieSlider.style"
+
 import Image from "@/components/atoms/Image/Image"
 import borderRadius from "@/utils/style/borderRadius"
 import Tag from "@/components/molecules/Tag/Tag"
