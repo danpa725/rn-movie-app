@@ -1,13 +1,9 @@
+import { LinearGradient } from "expo-linear-gradient"
 import styled from "styled-components/native"
 
-const ParentContainer = styled.View`
+const VerticalScrollContainer = styled.FlatList`
+    background: ${(props) => props.theme.background};
     width: 100%;
-    margin-left: 20px;
-`
-
-const VerticalScrollContainer = styled.ScrollView`
-    width: 100%;
-    padding: 20px 0;
 `
 
 const CardContainer = styled.View`
@@ -19,9 +15,14 @@ const CardContainer = styled.View`
     width: 90%;
     height: 300px;
 
-    margin-bottom: 25px;
-
     border-radius: 10px;
+
+    margin-left: 20px;
+`
+
+const CardContainerDivider = styled.View`
+    height: 25px;
+    background-color: transparent;
 `
 
 const SideContainer = styled.View`
@@ -31,8 +32,11 @@ const SideContainer = styled.View`
     align-items: flex-start;
     justify-content: space-between;
 
-    width: 135px;
+    width: 125px;
     height: 260px;
+
+    padding-top: 5px;
+    padding-bottom: 7.5px;
 
     margin-left: 15px;
 `
@@ -52,11 +56,17 @@ const TagContainer = styled.View`
     margin-bottom: 10px;
 `
 
+const FooterContainerDivider = styled.View`
+    height: 35px;
+    background-color: transparent;
+`
+
 export {
-    ParentContainer,
     VerticalScrollContainer,
     ContentContainer,
     SideContainer,
     TagContainer,
     CardContainer,
+    CardContainerDivider,
+    FooterContainerDivider,
 }

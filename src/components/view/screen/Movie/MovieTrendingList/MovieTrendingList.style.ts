@@ -4,16 +4,16 @@ import styled from "styled-components/native"
 const ListContainer = styled.View`
     margin-top: 20px;
 `
-const ListScrollContainer = styled.ScrollView`
-    padding-bottom: 10px;
-    margin: 20px;
-    margin-left: 0px;
+const ListScrollContainer = styled.FlatList`
+    margin-top: 20px;
+
     width: 100%;
     height: 325px;
 
     background: transparent;
 `
-
+//* Flat list로는 엘리먼트 사이 간격을 스타일링 하지 않아도 된다
+//*
 const ListBox = styled.View<ThemeMode>`
     display: flex;
     align-items: baseline;
@@ -22,12 +22,15 @@ const ListBox = styled.View<ThemeMode>`
     width: 200px;
     height: 220px;
 
-    margin: 0 20px;
-
     background: ${({ isLight, theme }) =>
         isLight ? theme.trueDeepDark : theme.gray8};
     border-radius: ${(props) => props.theme.bxlg};
 `
+const ListBoxDivider = styled.View`
+    width: 30px;
+    background-color: transparent;
+`
+
 const ListTitleContainer = styled.View<ThemeMode>`
     position: absolute;
     bottom: -50px;
@@ -75,6 +78,7 @@ const TitleContainer = styled.View`
 export {
     ListBox,
     ListContainer,
+    ListBoxDivider,
     ListScrollContainer,
     ListTitleContainer,
     ListNumebr,

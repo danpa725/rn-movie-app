@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react"
-import { RefreshControl } from "react-native"
 
 import { MovieData, TrendingMovieData } from "./utils/interface"
 import { getMovieList } from "./utils/getMovieData"
 
+import pallete from "@utils/style/pallete"
+
 import Loader from "@components/atoms/Loader/Loader"
+import Title from "@components/molecules/Title/Title"
 
 import MovieSlider from "./MovieSlider/MovieSlider"
 import MovieTrendingList from "./MovieTrendingList/MovieTrendingList"
-import MovieUpcomingList from "./MovieUpcomingList/MovieUpcomingList"
+import MovieRenderParent from "./MovieRenderParent/MovieRenderParent"
 
-import { MovieScreenContainer } from "./MovieScreen.style"
+import { TitleContainer } from "./MovieScreen.style"
+import { Ionicons } from "@expo/vector-icons"
 
 function MovieScreen() {
     //* loading state
@@ -52,15 +55,29 @@ function MovieScreen() {
     if (loading) return <Loader />
 
     return (
-        <MovieScreenContainer
-            refreshControl={
-                <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        <MovieRenderParent
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            upcomingMovieList={upcomingMovieList}
+            ListHeaderComponent={
+                <>
+                    <MovieSlider movieList={movieList} />
+                    <MovieTrendingList trendingMovieList={trendingMovieList} />
+                    <TitleContainer>
+                        <Title
+                            title="Upcoming"
+                            Icon={
+                                <Ionicons
+                                    name="alarm"
+                                    size={18}
+                                    color={pallete.teal7}
+                                />
+                            }
+                        />
+                    </TitleContainer>
+                </>
             }
-        >
-            <MovieSlider movieList={movieList} />
-            <MovieTrendingList trendingMovieList={trendingMovieList} />
-            <MovieUpcomingList upcomingMovieList={upcomingMovieList} />
-        </MovieScreenContainer>
+        />
     )
 }
 

@@ -1,3 +1,5 @@
+import { MovieData, TrendingMovieData } from "./interface"
+
 export const API_KEY = "6b62dc478a01071b4521cf9b55154456"
 
 export const makeImagePath = (imageURL: string, width: string = "w500") => {
