@@ -1,66 +1,81 @@
-import { Platform } from "react-native";
+import { Platform, StyleSheet } from "react-native"
+import pallete from "./pallete"
 
-interface IosShadow {
-    shadowColor?: string;
-    shadowOffset?: {
-        width: number;
-        height: number;
-    };
-    shadowOpacity?: number;
-    shadowRadius?: number;
-}
+// interface IosShadow {
+//     shadowColor?: string
+//     shadowOffset?: {
+//         width: number
+//         height: number
+//     }
+//     shadowOpacity?: number
+//     shadowRadius?: number
+// }
 
-interface AndroidShadow {
-    elevation?: number;
-}
+// interface AndroidShadow {
+//     elevation?: number
+// }
 
-interface ShadowStyle {
-    ios: {
-        sm: IosShadow;
-        md: IosShadow;
-        lg: IosShadow;
-        xLg: IosShadow;
-    };
-    android: {
-        sm: AndroidShadow;
-        md: AndroidShadow;
-        lg: AndroidShadow;
-        xLg: AndroidShadow;
-    };
-}
-
-const shadowStyle: ShadowStyle = {
-    ios: {
-        sm: {},
-        md: {
-            shadowColor: "black",
-            shadowOffset: {
-                width: 0,
-                height: 10,
-            },
-            shadowOpacity: 0.25,
-            shadowRadius: 3,
+const IOS_SHADOW = StyleSheet.create({
+    sm: {
+        shadowColor: pallete.dark,
+        shadowOffset: {
+            width: 0,
+            height: 10,
         },
-        lg: {},
-        xLg: {},
+        shadowOpacity: 0.25,
+        shadowRadius: 3,
     },
-    android: {
-        sm: {},
-        md: {
-            elevation: 10,
+    md: {
+        shadowColor: pallete.deepDark,
+        shadowOffset: {
+            width: 0,
+            height: 10,
         },
-        lg: {},
-        xLg: {},
+        shadowOpacity: 0.35,
+        shadowRadius: 3,
     },
-};
+    lg: {
+        shadowColor: pallete.trueDeepDark,
+        shadowOffset: {
+            width: 0,
+            height: 10,
+        },
+        shadowOpacity: 0.45,
+        shadowRadius: 3,
+    },
+    xLg: {
+        shadowColor: pallete.trueDeepDark,
+        shadowOffset: {
+            width: 0,
+            height: 10,
+        },
+        shadowOpacity: 0.5,
+        shadowRadius: 3,
+    },
+})
+
+const ANDROID_SHADOW = StyleSheet.create({
+    sm: {
+        elevation: 5,
+    },
+    md: {
+        elevation: 10,
+    },
+    lg: {
+        elevation: 15,
+    },
+    xLg: {
+        elevation: 20,
+    },
+})
 
 const shadow = Platform.select({
     ios: {
-        ...shadowStyle.ios,
+        ...IOS_SHADOW,
     },
     android: {
-        ...shadowStyle.android,
+        ...ANDROID_SHADOW,
     },
-});
+})
 
-export default shadow;
+export default shadow

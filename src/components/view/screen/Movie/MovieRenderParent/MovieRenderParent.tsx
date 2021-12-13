@@ -24,6 +24,7 @@ import {
     CardContainerDivider,
     FooterContainerDivider,
 } from "./MovieRenderParent.style"
+import shadow from "@/utils/style/shadow"
 
 interface MovieUpcomingListProps {
     upcomingMovieList: MovieData[]
@@ -57,11 +58,7 @@ function MovieRenderParent({
 
     const renderItem = useCallback(
         ({ item }) => (
-            <CardContainer
-                style={{
-                    elevation: 5,
-                }}
-            >
+            <CardContainer style={shadow?.xLg}>
                 {item.backdrop_path !== null && (
                     <Image
                         width="100%"
@@ -222,7 +219,7 @@ function MovieRenderParent({
             renderItem={renderItem}
             getItemLayout={getItemLayout}
             keyExtractor={(item) => String(item.id)}
-            ItemSeparatorComponent={() => <CardContainerDivider />}
+            ItemSeparatorComponent={CardContainerDivider}
             removeClippedSubviews={false}
             disableVirtualization={false}
             ListFooterComponent={<FooterContainerDivider />}

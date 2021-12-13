@@ -24,6 +24,7 @@ import {
 } from "./MovieTrendingList.style"
 import { Ionicons } from "@expo/vector-icons"
 import useItemLayout from "@/hooks/useItemLayout"
+import shadow from "@/utils/style/shadow"
 
 interface MovieListProps {
     trendingMovieList: TrendingMovieData[]
@@ -38,9 +39,9 @@ function MovieTrendingList({ trendingMovieList }: MovieListProps) {
 
     const renderItem = useCallback(
         ({ item, index: movieNumber }) => (
-            <ListBox style={{ elevation: 7.5 }} isLight={isLight}>
+            <ListBox style={shadow?.sm} isLight={isLight}>
                 <ListNumebr>{movieNumber + 1}</ListNumebr>
-                <ListTitleContainer style={{ elevation: 10 }} isLight={isLight}>
+                <ListTitleContainer style={shadow?.sm} isLight={isLight}>
                     <TextCustome fontSize="13px" fontWeight={700}>
                         {item.title.length <= 27
                             ? item.title
@@ -83,7 +84,7 @@ function MovieTrendingList({ trendingMovieList }: MovieListProps) {
                 data={trendingMovieList}
                 renderItem={renderItem}
                 getItemLayout={getItemLayout}
-                ItemSeparatorComponent={() => <ListBoxDivider />}
+                ItemSeparatorComponent={ListBoxDivider}
                 keyExtractor={(item) => String(item.id)}
                 removeClippedSubviews={false}
                 contentContainerStyle={{
