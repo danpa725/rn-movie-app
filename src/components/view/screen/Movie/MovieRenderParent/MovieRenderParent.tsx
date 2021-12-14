@@ -4,6 +4,8 @@ import { BlurView } from "expo-blur"
 import { Ionicons } from "@expo/vector-icons"
 
 import pallete from "@utils/style/pallete"
+import shadow from "@utils/style/shadow"
+
 import useThemeMode from "@hooks/useThemeMode"
 import useItemLayout from "@hooks/useItemLayout"
 
@@ -12,8 +14,9 @@ import TextCustome from "@components/atoms/Text/Text"
 import Gradient from "@components/atoms/Gradient/Gradient"
 import Tag from "@components/molecules/Tag/Tag"
 
-import { MovieData } from "../utils/interface"
-import { makeImagePath } from "../utils/getMovieData"
+import { makeImagePath } from "@/api/movie/fetcher/fetchMovieData"
+
+import { MovieData } from "../../../../../api/movie/interface/interface"
 
 import {
     VerticalScrollContainer,
@@ -24,7 +27,6 @@ import {
     CardContainerDivider,
     FooterContainerDivider,
 } from "./MovieRenderParent.style"
-import shadow from "@/utils/style/shadow"
 
 interface MovieUpcomingListProps {
     upcomingMovieList: MovieData[]
@@ -218,6 +220,7 @@ function MovieRenderParent({
             data={upcomingMovieList}
             renderItem={renderItem}
             getItemLayout={getItemLayout}
+            //@ts-ignore
             keyExtractor={(item) => String(item.id)}
             ItemSeparatorComponent={CardContainerDivider}
             removeClippedSubviews={false}

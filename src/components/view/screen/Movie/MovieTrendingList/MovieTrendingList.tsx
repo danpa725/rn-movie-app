@@ -9,8 +9,8 @@ import pallete from "@utils/style/pallete"
 
 import useThemeMode from "@hooks/useThemeMode"
 
-import { makeImagePath } from "../utils/getMovieData"
-import { TrendingMovieData } from "../utils/interface"
+import { makeImagePath } from "../../../../../api/movie/fetcher/fetchMovieData"
+import { TrendingMovieData } from "../../../../../api/movie/interface/interface"
 
 import {
     ListBox,
@@ -85,6 +85,7 @@ function MovieTrendingList({ trendingMovieList }: MovieListProps) {
                 renderItem={renderItem}
                 getItemLayout={getItemLayout}
                 ItemSeparatorComponent={ListBoxDivider}
+                //@ts-ignore
                 keyExtractor={(item) => String(item.id)}
                 removeClippedSubviews={false}
                 contentContainerStyle={{

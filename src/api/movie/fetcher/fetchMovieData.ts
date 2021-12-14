@@ -1,6 +1,6 @@
-import { MovieData, TrendingMovieData } from "./interface"
+import axios from "axios"
 
-export const API_KEY = "6b62dc478a01071b4521cf9b55154456"
+const API_KEY = "6b62dc478a01071b4521cf9b55154456"
 
 export const makeImagePath = (imageURL: string, width: string = "w500") => {
     const baseURL = "https://image.tmdb.org/t/p/"
@@ -15,8 +15,9 @@ const getMovieURL = (dataInfoQuery: DataInfoQuery) => {
     return `https://api.themoviedb.org/3/movie/${dataInfoQuery}?api_key=${API_KEY}&language=en-US&page=1&region=KR`
 }
 
-export const getMovieList = async (dataInfoQuery: DataInfoQuery) => {
-    const response = await fetch(getMovieURL(dataInfoQuery))
-    const { results } = await response.json()
-    return results
+export const fetchMovieData = async (
+    dataInfoQuery: DataInfoQuery
+): Promise<any> => {
+    const { data } = await axios.get(getMovieURL(dataInfoQuery))
+    return data
 }

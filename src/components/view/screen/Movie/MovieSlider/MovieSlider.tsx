@@ -6,8 +6,8 @@ import useThemeMode from "@/hooks/useThemeMode"
 import Swiper from "react-native-swiper"
 import { BlurView } from "expo-blur"
 
-import { makeImagePath } from "../utils/getMovieData"
-import { MovieData } from "../utils/interface"
+import { makeImagePath } from "@api/movie/fetcher/fetchMovieData"
+import { MovieData } from "@api/movie/interface/interface"
 
 import {
     MovieCard,
@@ -15,13 +15,13 @@ import {
     MovieWrapper,
 } from "./MovieSlider.style"
 
-import Image from "@/components/atoms/Image/Image"
-import borderRadius from "@/utils/style/borderRadius"
-import Tag from "@/components/molecules/Tag/Tag"
+import Image from "@components/atoms/Image/Image"
+import borderRadius from "@utils/style/borderRadius"
+import Tag from "@components/molecules/Tag/Tag"
 import { Ionicons } from "@expo/vector-icons"
-import pallete from "@/utils/style/pallete"
-import TextCustome from "@/components/atoms/Text/Text"
-import fontSize from "@/utils/style/font"
+import pallete from "@utils/style/pallete"
+import TextCustome from "@components/atoms/Text/Text"
+import fontSize from "@utils/style/font"
 
 interface MovieSliderProps {
     movieList: MovieData[]
@@ -44,7 +44,7 @@ function MovieSlider({ movieList }: MovieSliderProps) {
             showsButtons={false}
             showsPagination={false}
         >
-            {movieList.length !== 0 &&
+            {movieList &&
                 movieList.map(
                     ({
                         id,

@@ -1,3 +1,22 @@
+interface PureData {
+    page: number
+
+    total_pages: number
+    total_results: number
+}
+
+export interface MovieTotalData extends PureData {
+    results: MovieData[]
+    dates: {
+        maximum: string
+        minimum: string
+    }
+}
+
+export interface TrendingMovieTotalData extends PureData {
+    results: TrendingMovieData[]
+}
+
 export interface MovieData {
     poster_path: string | null
     backdrop_path: string | null
