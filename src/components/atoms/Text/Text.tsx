@@ -1,9 +1,9 @@
-import React from "react"
+import React, { ReactElement } from "react"
 import { StyleProp, TextStyle as RNTextStyle } from "react-native"
 import { TextStyled, TextStyle } from "./Text.style"
 
 interface TextCustimeProps extends TextStyle {
-    children: any
+    children: ReactElement | string
     customeStyle?: StyleProp<RNTextStyle>
 }
 

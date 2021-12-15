@@ -1,18 +1,20 @@
-import React from "react";
+import React from "react"
 
-import { BottomTabNavigationOptions } from "@react-navigation/bottom-tabs";
-import { Feather } from "@expo/vector-icons";
-import pallete from "utils/style/pallete";
+import { BottomTabNavigationOptions } from "@react-navigation/bottom-tabs"
+import { Feather } from "@expo/vector-icons"
+import pallete from "utils/style/pallete"
 
 //* 전체 navigation tap 스타일 설정
 interface NavigationOptions {
-    dark: BottomTabNavigationOptions;
-    light: BottomTabNavigationOptions;
+    dark: BottomTabNavigationOptions
+    light: BottomTabNavigationOptions
 }
 
 const COMMON_NAVIGATION_OPTIONS: BottomTabNavigationOptions = {
     headerTitleAlign: "center",
-};
+    //* 화면에서 벗어나면 메모리에서 컴포넌트 해제
+    //* unmountOnBlur: true,
+}
 
 const NAVIGATION_OPTIONS: NavigationOptions = {
     light: {
@@ -62,16 +64,16 @@ const NAVIGATION_OPTIONS: NavigationOptions = {
         tabBarActiveTintColor: pallete.blue5,
         tabBarInactiveTintColor: pallete.gray6,
     },
-};
+}
 
 interface ScreenOptions {
     [screenName: string]: {
-        light: BottomTabNavigationOptions;
-        dark: BottomTabNavigationOptions;
-    };
+        light: BottomTabNavigationOptions
+        dark: BottomTabNavigationOptions
+    }
 }
 
-const ICON_ACTIVE_SCALE = 1.15;
+const ICON_ACTIVE_SCALE = 1.15
 
 //* 각 스크린 스타일 개별 설정
 const SCREEN_OPTIONS: ScreenOptions = {
@@ -135,6 +137,6 @@ const SCREEN_OPTIONS: ScreenOptions = {
             ),
         },
     },
-};
+}
 
-export { NAVIGATION_OPTIONS, SCREEN_OPTIONS };
+export { NAVIGATION_OPTIONS, SCREEN_OPTIONS }

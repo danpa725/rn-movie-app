@@ -1,35 +1,16 @@
-import TextCustome from "@/components/atoms/Text/Text"
-import { ThemeMode } from "@/utils/style/CustomeTheme"
 import React from "react"
 import { StyleProp, ViewStyle } from "react-native"
-import styled from "styled-components/native"
+
+import TextCustome from "@components/atoms/Text/Text"
+import { FontSizeType } from "@utils/style/font"
+
+import { TagContainerStyle, TagContainer } from "./Tag.style"
 
 interface TagProps extends TagContainerStyle {
     children: any
-    fontSize: string
+    fontSize?: FontSizeType
     customeStyle?: StyleProp<ViewStyle>
 }
-
-interface TagContainerStyle extends ThemeMode {
-    borderRadius?: string
-}
-
-const TagContainer = styled.View<TagContainerStyle>`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 5px;
-
-    background-color: ${({ isLight, theme }) =>
-        isLight ? theme.gray2 : theme.trueDeepDark};
-
-    border: 1px solid
-        ${({ isLight, theme }) => (isLight ? theme.yellow8 : theme.yellow6)};
-
-    border-radius: ${({ borderRadius, theme }) =>
-        borderRadius ? borderRadius : theme.blg};
-`
 
 function Tag({
     children: innerText,
@@ -44,7 +25,10 @@ function Tag({
             borderRadius={borderRadius}
             style={customeStyle}
         >
-            <TextCustome fontSize={fontSize} fontWeight={700}>
+            <TextCustome
+                fontSize={fontSize ? fontSize : "xsm"}
+                fontWeight={700}
+            >
                 {innerText}
             </TextCustome>
         </TagContainer>

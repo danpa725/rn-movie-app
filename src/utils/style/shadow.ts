@@ -76,6 +76,10 @@ const shadow = Platform.select({
     android: {
         ...ANDROID_SHADOW,
     },
+    default: {
+        ...IOS_SHADOW,
+        ...ANDROID_SHADOW,
+    },
 })
 
 export default shadow

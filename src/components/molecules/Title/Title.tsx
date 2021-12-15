@@ -1,10 +1,11 @@
-import TextCustome from "@components/atoms/Text/Text"
-import fontSize from "@utils/style/font"
 import React, { ReactElement } from "react"
+
+import TextCustome from "@components/atoms/Text/Text"
+import { FontSizeType } from "@utils/style/font"
 
 interface TitleProps {
     title: string
-    titleSize?: string
+    titleSize?: FontSizeType
     titleWeight?: number
     Icon: ReactElement
 }
@@ -12,10 +13,12 @@ interface TitleProps {
 function Title({ title, Icon, titleSize, titleWeight }: TitleProps) {
     return (
         <TextCustome
-            fontSize={titleSize ? titleSize : fontSize.xlg}
+            fontSize={titleSize}
             fontWeight={titleWeight ? titleWeight : 700}
         >
-            {title} {Icon}
+            <>
+                {title} {Icon}
+            </>
         </TextCustome>
     )
 }

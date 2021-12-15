@@ -1,23 +1,23 @@
-import React from "react";
-import { useColorScheme } from "react-native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import React from "react"
+import { useColorScheme } from "react-native"
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 
-import MovieScreen from "@components/view/screen/Movie/MovieScreen";
-import TrendScreen from "@components/view/screen/Trend/TrendScreen";
-import TvScreen from "@components/view/screen/Tv/TvScreen";
+import MovieScreen from "@components/view/screen/Movie/MovieScreen"
+import TrendScreen from "@components/view/screen/Trend/TrendScreen"
+import TvScreen from "@components/view/screen/Tv/TvScreen"
 
-import { NAVIGATION_OPTIONS, SCREEN_OPTIONS } from "./Tab.style";
+import { NAVIGATION_OPTIONS, SCREEN_OPTIONS } from "./Tab.style"
 
-const TabNav = createBottomTabNavigator();
+const TabNav = createBottomTabNavigator()
 
 const ROUTE_NAME = {
     MOVIE: "Movie",
     TV: "TV",
     TRENDS: "TRENDS",
-};
+}
 
 function Tab() {
-    const isLight = useColorScheme() === "light";
+    const isLight = useColorScheme() === "light"
 
     return (
         <TabNav.Navigator
@@ -54,7 +54,7 @@ function Tab() {
                 }
             />
         </TabNav.Navigator>
-    );
+    )
 }
 
-export default Tab;
+export default Tab

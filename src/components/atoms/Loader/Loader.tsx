@@ -12,7 +12,10 @@ interface LoaderOptions {
 function Loader({ color }: LoaderOptions) {
     return (
         <LoaderContainer>
-            <ActivityIndicator color={color ? color : pallete.teal6} />
+            <ActivityIndicator
+                color={color ? color : pallete.teal6}
+                size={35}
+            />
         </LoaderContainer>
     )
 }
