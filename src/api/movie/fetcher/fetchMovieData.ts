@@ -1,11 +1,5 @@
+import { API_KEY } from "@constants/constant"
 import axios from "axios"
-
-const API_KEY = "6b62dc478a01071b4521cf9b55154456"
-
-export const makeImagePath = (imageURL: string, width: string = "w500") => {
-    const baseURL = "https://image.tmdb.org/t/p/"
-    return `${baseURL}${width}${imageURL}`
-}
 
 type DataInfoQuery = "now_playing" | "upcoming" | "trending"
 

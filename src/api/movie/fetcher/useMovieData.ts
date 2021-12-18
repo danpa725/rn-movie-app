@@ -1,29 +1,38 @@
-import { useQuery } from "react-query"
+import { useQuery, useQueryClient } from "react-query"
 
 import { fetchMovieData } from "./fetchMovieData"
-import {
-    MOVIE_NOW_PLAYING,
-    MOVIE_TRENDING,
-    MOVIE_UPCOMING,
-} from "@api/movie/queryKey/movieKey"
+import { MOVIE_CATEGORY, MOVIE_QUERY } from "@api/movie/queryKey/movieKey"
+
 import { MovieTotalData, TrendingMovieTotalData } from "../interface/interface"
 
 function useMovieNowPlaying() {
-    return useQuery<MovieTotalData>(MOVIE_NOW_PLAYING, () =>
-        fetchMovieData("now_playing")
+    return useQuery<MovieTotalData>(
+        [MOVIE_CATEGORY, { type: MOVIE_QUERY.NOW_PLAYING }],
+        () => fetchMovieData("now_playing")
     )
 }
 
 function useMovieUpcoming() {
-    return useQuery<MovieTotalData>(MOVIE_UPCOMING, () =>
-        fetchMovieData("upcoming")
+    return useQuery<MovieTotalData>(
+        [MOVIE_CATEGORY, { type: MOVIE_QUERY.UPCOMING }],
+        () => fetchMovieData("upcoming")
     )
 }
 
 function useMovieTrending() {
-    return useQuery<TrendingMovieTotalData>(MOVIE_TRENDING, () =>
-        fetchMovieData("trending")
+    return useQuery<TrendingMovieTotalData>(
+        [MOVIE_CATEGORY, { type: MOVIE_QUERY.TRENDING }],
+        () => fetchMovieData("trending")
     )
 }
 
-export { useMovieNowPlaying, useMovieTrending, useMovieUpcoming }
+function useRefetchingMovieData() {
+    return useQueryClient().refetchQueries([MOVIE_CATEGORY])
+}
+
+export {
+    useMovieNowPlaying,
+    useMovieTrending,
+    useMovieUpcoming,
+    useRefetchingMovieData,
+}

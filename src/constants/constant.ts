@@ -1,3 +1,3 @@
-const TEST_CONSTANT = 500;
+const API_KEY = "6b62dc478a01071b4521cf9b55154456"
 
-export { TEST_CONSTANT };
+export { API_KEY }
