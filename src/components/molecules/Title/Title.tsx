@@ -1,18 +1,26 @@
 import React, { ReactElement } from "react"
 
-import Text from "@components/atoms/Text/Text"
-import { FontSizeType } from "@utils/style/font"
-
-interface TitleProps {
+import Text, { TextProps } from "@components/atoms/Text/Text"
+interface TitleProps extends Omit<TextProps, "children"> {
     title: string
-    titleSize?: FontSizeType
-    titleWeight?: number
     Icon: ReactElement
 }
 
-function Title({ title, Icon, titleSize, titleWeight }: TitleProps) {
+function Title({
+    title,
+    Icon,
+    fontSize,
+    fontWeight,
+    fontColor,
+    customeStyle,
+}: TitleProps) {
     return (
-        <Text fontSize={titleSize} fontWeight={titleWeight ? titleWeight : 700}>
+        <Text
+            fontSize={fontSize}
+            fontWeight={fontWeight ? fontWeight : 700}
+            fontColor={fontColor}
+            customeStyle={customeStyle}
+        >
             <>
                 {title} {Icon}
             </>

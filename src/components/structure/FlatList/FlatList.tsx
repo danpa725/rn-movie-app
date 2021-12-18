@@ -1,18 +1,13 @@
-import useItemLayout from "@/hooks/useItemLayout"
-import React, { ReactElement, useCallback, useEffect } from "react"
-import styled from "styled-components/native"
-import {
-    FlatListProps as RnFlatListProps,
-    StyleProp,
-    ViewStyle,
-} from "react-native"
+import React, { useCallback } from "react"
 
-const FlatListContaienr = styled.FlatList`
-    background: ${(props) => props.theme.background};
-    width: 100%;
-`
+import { FlatListProps as RnFlatListProps } from "react-native"
 
-interface FlatListProps<DataType> {
+import useItemLayout from "@hooks/useItemLayout"
+
+import { FlatListContaiener } from "./FlatList.style"
+
+interface FlatListProps<DataType>
+    extends Omit<RnFlatListProps<DataType>, "renderItem"> {
     data: Readonly<DataType[]>
     RenderElement: ({
         data,
@@ -22,18 +17,18 @@ interface FlatListProps<DataType> {
         index: number
     }) => JSX.Element
     keyExtractor: (item: DataType, index: number) => string
-    horizontal: boolean
     itemHeight: number
-    refreshing?: boolean
-    onRefresh?: () => void
-    ItemSeparatorComponent?: React.ComponentType<any>
-    contentContainerStyle?: StyleProp<ViewStyle>
-    ListHeaderComponent?: ReactElement
-    ListHeaderComponentStyle?: StyleProp<ViewStyle>
-    ListFooterComponent?: ReactElement
-    ListFooterComponentStyle?: StyleProp<ViewStyle>
-    showsHorizontalScrollIndicator?: boolean
-    showsVerticalScrollIndicator?: boolean
+    // horizontal: boolean
+    // refreshing?: boolean
+    // onRefresh?: () => void
+    // ItemSeparatorComponent?: React.ComponentType<any>
+    // contentContainerStyle?: StyleProp<ViewStyle>
+    // ListHeaderComponent?: ReactElement
+    // ListHeaderComponentStyle?: StyleProp<ViewStyle>
+    // ListFooterComponent?: ReactElement
+    // ListFooterComponentStyle?: StyleProp<ViewStyle>
+    // showsHorizontalScrollIndicator?: boolean
+    // showsVerticalScrollIndicator?: boolean
 }
 
 function FlatList<DataType>({
@@ -60,7 +55,7 @@ function FlatList<DataType>({
     }, [])
 
     return (
-        <FlatListContaienr
+        <FlatListContaiener
             refreshing={refreshing}
             onRefresh={onRefresh}
             data={data}

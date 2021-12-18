@@ -2,7 +2,7 @@ import React, { ReactElement } from "react"
 import { StyleProp, TextStyle as RNTextStyle } from "react-native"
 import { TextStyled, TextStyle } from "./Text.style"
 
-interface TextCustimeProps extends TextStyle {
+export interface TextProps extends TextStyle {
     children: ReactElement | string
     customeStyle?: StyleProp<RNTextStyle>
 }
@@ -13,7 +13,7 @@ function Text({
     fontWeight,
     children: innerText,
     customeStyle,
-}: TextCustimeProps) {
+}: TextProps) {
     return (
         <TextStyled
             fontSize={fontSize}

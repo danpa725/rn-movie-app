@@ -73,7 +73,7 @@ function MovieScreen() {
                         <TitleContainer>
                             <Title
                                 title="Upcoming"
-                                titleSize="xlg"
+                                fontSize="xlg"
                                 Icon={
                                     <Ionicons
                                         name="alarm"
