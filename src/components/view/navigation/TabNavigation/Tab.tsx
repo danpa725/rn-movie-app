@@ -12,8 +12,8 @@ const TabNav = createBottomTabNavigator()
 
 const ROUTE_NAME = {
     MOVIE: "Movie",
-    TV: "TV",
-    TRENDS: "TRENDS",
+    TV: "Tv",
+    TRENDS: "Trends",
 }
 
 function Tab() {
@@ -49,8 +49,8 @@ function Tab() {
                 component={TrendScreen}
                 options={
                     isLight
-                        ? SCREEN_OPTIONS.settings.light
-                        : SCREEN_OPTIONS.settings.dark
+                        ? SCREEN_OPTIONS.trending.light
+                        : SCREEN_OPTIONS.trending.dark
                 }
             />
         </TabNav.Navigator>

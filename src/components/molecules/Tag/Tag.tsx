@@ -1,7 +1,7 @@
 import React from "react"
 import { StyleProp, ViewStyle } from "react-native"
 
-import TextCustome from "@components/atoms/Text/Text"
+import Text from "@components/atoms/Text/Text"
 import { FontSizeType } from "@utils/style/font"
 
 import { TagContainerStyle, TagContainer } from "./Tag.style"
@@ -25,12 +25,9 @@ function Tag({
             borderRadius={borderRadius}
             style={customeStyle}
         >
-            <TextCustome
-                fontSize={fontSize ? fontSize : "xsm"}
-                fontWeight={700}
-            >
+            <Text fontSize={fontSize ? fontSize : "xsm"} fontWeight={700}>
                 {innerText}
-            </TextCustome>
+            </Text>
         </TagContainer>
     )
 }

@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react"
 import { StyleProp, ViewStyle } from "react-native"
-import TextCustome from "../../atoms/Text/Text"
+import Text from "../../atoms/Text/Text"
 import { TextStyle } from "../../atoms/Text/Text.style"
 import { ButtonContainer, ButtonContainerStyle } from "./Button.style"
 
@@ -12,7 +12,7 @@ interface ButtonProps extends ButtonContainerStyle, TextStyle {
     customeStyle?: StyleProp<ViewStyle>
 }
 
-function ButtonCustome({
+function Button({
     onPress,
     buttonText,
     background,
@@ -43,13 +43,13 @@ function ButtonCustome({
             style={customeStyle && customeStyle}
         >
             {buttonText && (
-                <TextCustome fontSize={fontSize} fontWeight={fontWeight}>
+                <Text fontSize={fontSize} fontWeight={fontWeight}>
                     {buttonText}
-                </TextCustome>
+                </Text>
             )}
             {Icon && Icon}
         </ButtonContainer>
     )
 }
 
-export default ButtonCustome
+export default Button

@@ -7,7 +7,7 @@ interface TextCustimeProps extends TextStyle {
     customeStyle?: StyleProp<RNTextStyle>
 }
 
-function TextCustome({
+function Text({
     fontSize,
     fontColor,
     fontWeight,
@@ -26,4 +26,4 @@ function TextCustome({
     )
 }
 
-export default TextCustome
+export default Text
