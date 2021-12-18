@@ -42,7 +42,7 @@ const MovieTrendingListRender = ({
 
     return (
         <ListBox style={shadow?.sm} isLight={isLight}>
-            <ListNumebr>{movieNumber}</ListNumebr>
+            <ListNumebr isFirst={movieNumber === 1}>{movieNumber}</ListNumebr>
             <ListTitleContainer style={shadow?.sm} isLight={isLight}>
                 <Text fontSize="md" fontWeight={700}>
                     {item.title.length <= 27
@@ -74,7 +74,7 @@ function MovieTrendingList({ trendingMovieList }: MovieListProps) {
             <TitleContainer>
                 <Title
                     title="Trending"
-                    titleSize="xlg"
+                    fontSize="xlg"
                     Icon={
                         <Ionicons name="heart" size={16} color={pallete.red5} />
                     }

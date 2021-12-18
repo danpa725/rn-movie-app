@@ -50,11 +50,11 @@ const ListVote = styled.View`
     justify-content: center;
 `
 
-const ListNumebr = styled.Text`
+const ListNumebr = styled.Text<{ isFirst: boolean }>`
     position: absolute;
 
     top: 85px;
-    left: 127.5px;
+    left: ${({ isFirst }) => (isFirst ? "137.5px" : "127.5px")};
 
     font-size: 115px;
     font-weight: 500;
