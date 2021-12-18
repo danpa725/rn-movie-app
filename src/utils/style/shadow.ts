@@ -16,6 +16,15 @@ import pallete from "./pallete"
 // }
 
 const IOS_SHADOW = StyleSheet.create({
+    xsm: {
+        shadowColor: pallete.dark,
+        shadowOffset: {
+            width: 0,
+            height: 5,
+        },
+        shadowOpacity: 0.15,
+        shadowRadius: 1,
+    },
     sm: {
         shadowColor: pallete.dark,
         shadowOffset: {
@@ -55,6 +64,9 @@ const IOS_SHADOW = StyleSheet.create({
 })
 
 const ANDROID_SHADOW = StyleSheet.create({
+    xsm: {
+        elevation: 2.5,
+    },
     sm: {
         elevation: 5,
     },
