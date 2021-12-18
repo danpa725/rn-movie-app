@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 
 import pallete from "@utils/style/pallete"
 
@@ -26,41 +26,47 @@ function MovieScreen() {
         data: movieList,
         error: movieError,
         refetch: refetchMovieNowPlaying,
-        isRefetching: isRefetchingMovieNowPlaying,
     } = useMovieNowPlaying()
     const {
         isLoading: isUpcomingMovieLoading,
         data: upcomingMovieList,
         error: upcomingMovieError,
         refetch: refetchMovieUpcoming,
-        isRefetching: isRefetchingMovieUpcoming,
     } = useMovieUpcoming()
     const {
         isLoading: isTrendingMovieLoading,
         data: trendingMovieList,
         error: trndingMovieError,
         refetch: refetchMovieTrending,
-        isRefetching: isRefetchingMovieTrending,
     } = useMovieTrending()
 
-    //* refreshing
-    const refreshing =
-        isRefetchingMovieNowPlaying ||
-        isRefetchingMovieTrending ||
-        isRefetchingMovieUpcoming
+    const [isLoading, setIsLoading] = useState<boolean>(true)
+    useEffect(() => {
+        if (
+            !isMovieLoading &&
+            !isTrendingMovieLoading &&
+            !isUpcomingMovieLoading
+        )
+            setIsLoading(false)
+    }, [isMovieLoading, isTrendingMovieLoading, isUpcomingMovieLoading])
 
-    const onRefresh = () => {
-        refetchMovieNowPlaying()
-        refetchMovieTrending()
-        refetchMovieUpcoming()
+    const [refreshing, setRefreshing] = useState<boolean>(false)
+    const onRefresh = async () => {
+        setRefreshing(true)
+        await refetchMovieNowPlaying()
+        await refetchMovieTrending()
+        await refetchMovieUpcoming()
+        setRefreshing(false)
     }
 
-    if (upcomingMovieList && movieList && trendingMovieList)
+    if (!isLoading && upcomingMovieList && movieList && trendingMovieList)
         return (
             <MovieRenderParent
                 refreshing={refreshing}
                 onRefresh={onRefresh}
                 upcomingMovieList={upcomingMovieList.results}
+                //* scroll view 속 => 같은 방향 scroll의 Flatlist를 첨가할 수 없음
+                //* ListHeaderComponent로 렌더링
                 ListHeaderComponent={
                     <>
                         <MovieSlider movieList={movieList.results} />
