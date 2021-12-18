@@ -1,30 +1,29 @@
-import React, { useCallback } from "react"
+import React from "react"
 
-import Image from "@components/atoms/Image/Image"
-import TextCustome from "@components/atoms/Text/Text"
-import Tag from "@components/molecules/Tag/Tag"
-import Title from "@components/molecules/Title/Title"
+import { Ionicons } from "@expo/vector-icons"
 
 import pallete from "@utils/style/pallete"
+import shadow from "@utils/style/shadow"
 
 import useThemeMode from "@hooks/useThemeMode"
 
-import { makeImagePath } from "../../../../../api/movie/fetcher/fetchMovieData"
-import { TrendingMovieData } from "../../../../../api/movie/interface/interface"
+import { makeImagePath } from "@api/utils/makeImagePath"
+import { TrendingMovieData } from "@api/movie/interface/interface"
+
+import Text from "@components/atoms/Text/Text"
+import Image from "@components/atoms/Image/Image"
+import Tag from "@components/molecules/Tag/Tag"
+import Title from "@components/molecules/Title/Title"
+import FlatList from "@components/structure/FlatList/FlatList"
 
 import {
     ListBox,
     ListBoxDivider,
-    ListContainer,
     ListNumebr,
-    ListScrollContainer,
     ListTitleContainer,
     ListVote,
     TitleContainer,
 } from "./MovieTrendingList.style"
-import { Ionicons } from "@expo/vector-icons"
-import useItemLayout from "@/hooks/useItemLayout"
-import shadow from "@/utils/style/shadow"
 
 interface MovieListProps {
     trendingMovieList: TrendingMovieData[]
@@ -32,68 +31,74 @@ interface MovieListProps {
 
 const ITEM_HEIGHT = 325
 
-function MovieTrendingList({ trendingMovieList }: MovieListProps) {
+const MovieTrendingListRender = ({
+    data: item,
+    movieNumber,
+}: {
+    data: TrendingMovieData
+    movieNumber: number
+}) => {
     const isLight = useThemeMode()
 
-    const getItemLayout = useItemLayout(ITEM_HEIGHT)
-
-    const renderItem = useCallback(
-        ({ item, index: movieNumber }) => (
-            <ListBox style={shadow?.sm} isLight={isLight}>
-                <ListNumebr>{movieNumber + 1}</ListNumebr>
-                <ListTitleContainer style={shadow?.sm} isLight={isLight}>
-                    <TextCustome fontSize="13px" fontWeight={700}>
-                        {item.title.length <= 27
-                            ? item.title
-                            : `${item.title.slice(0, 27)}...`}
-                    </TextCustome>
-                </ListTitleContainer>
-
-                {item.poster_path && (
-                    <Image
-                        width="165px"
-                        height="220px"
-                        uri={makeImagePath(item.poster_path)}
-                    />
-                )}
-                <ListVote>
-                    <Tag isLight={isLight} borderRadius="15px" fontSize="10px">
-                        <Ionicons name="heart" size={10} color="tomato" />{" "}
-                        {item.vote_average}
-                    </Tag>
-                </ListVote>
-            </ListBox>
-        ),
-        []
-    )
-
     return (
-        <ListContainer>
+        <ListBox style={shadow?.sm} isLight={isLight}>
+            <ListNumebr>{movieNumber}</ListNumebr>
+            <ListTitleContainer style={shadow?.sm} isLight={isLight}>
+                <Text fontSize="md" fontWeight={700}>
+                    {item.title.length <= 27
+                        ? item.title
+                        : `${item.title.slice(0, 27)}...`}
+                </Text>
+            </ListTitleContainer>
+
+            {item.poster_path && (
+                <Image
+                    width="150px"
+                    height="220px"
+                    uri={makeImagePath(item.poster_path)}
+                />
+            )}
+            <ListVote>
+                <Tag isLight={isLight} borderRadius="bxxlg">
+                    <Ionicons name="heart" size={10} color="tomato" />{" "}
+                    {item.vote_average}
+                </Tag>
+            </ListVote>
+        </ListBox>
+    )
+}
+
+function MovieTrendingList({ trendingMovieList }: MovieListProps) {
+    return (
+        <>
             <TitleContainer>
                 <Title
                     title="Trending"
+                    titleSize="xlg"
                     Icon={
                         <Ionicons name="heart" size={16} color={pallete.red5} />
                     }
                 />
             </TitleContainer>
 
-            <ListScrollContainer
-                horizontal
+            <FlatList
+                horizontal={true}
                 showsHorizontalScrollIndicator={false}
                 data={trendingMovieList}
-                renderItem={renderItem}
-                getItemLayout={getItemLayout}
+                RenderElement={({ data, index }) => (
+                    <MovieTrendingListRender
+                        data={data}
+                        movieNumber={index + 1}
+                    />
+                )}
                 ItemSeparatorComponent={ListBoxDivider}
-                //@ts-ignore
                 keyExtractor={(item) => String(item.id)}
-                removeClippedSubviews={false}
                 contentContainerStyle={{
                     paddingHorizontal: 20,
                 }}
-                disableVirtualization={false}
+                itemHeight={ITEM_HEIGHT}
             />
-        </ListContainer>
+        </>
     )
 }
 

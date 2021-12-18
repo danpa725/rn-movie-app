@@ -2,8 +2,8 @@ import pallete from "@/utils/style/pallete"
 import styled from "styled-components/native"
 
 const MovieCard = styled.View`
-    flex: 1;
-    background: ${pallete.blue3};
+    width: 100%;
+    height: 100%;
 `
 
 const MovieWrapper = styled.View`

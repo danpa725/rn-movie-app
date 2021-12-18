@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 
 import pallete from "@utils/style/pallete"
 
@@ -25,21 +25,35 @@ function MovieScreen() {
         isLoading: isMovieLoading,
         data: movieList,
         error: movieError,
+        refetch: refetchMovieNowPlaying,
+        isRefetching: isRefetchingMovieNowPlaying,
     } = useMovieNowPlaying()
     const {
         isLoading: isUpcomingMovieLoading,
         data: upcomingMovieList,
         error: upcomingMovieError,
+        refetch: refetchMovieUpcoming,
+        isRefetching: isRefetchingMovieUpcoming,
     } = useMovieUpcoming()
     const {
         isLoading: isTrendingMovieLoading,
         data: trendingMovieList,
         error: trndingMovieError,
+        refetch: refetchMovieTrending,
+        isRefetching: isRefetchingMovieTrending,
     } = useMovieTrending()
 
     //* refreshing
-    const [refreshing, setRefreshing] = useState(false)
-    const onRefresh = () => {}
+    const refreshing =
+        isRefetchingMovieNowPlaying ||
+        isRefetchingMovieTrending ||
+        isRefetchingMovieUpcoming
+
+    const onRefresh = () => {
+        refetchMovieNowPlaying()
+        refetchMovieTrending()
+        refetchMovieUpcoming()
+    }
 
     if (upcomingMovieList && movieList && trendingMovieList)
         return (
@@ -59,6 +73,7 @@ function MovieScreen() {
                         <TitleContainer>
                             <Title
                                 title="Upcoming"
+                                titleSize="xlg"
                                 Icon={
                                     <Ionicons
                                         name="alarm"

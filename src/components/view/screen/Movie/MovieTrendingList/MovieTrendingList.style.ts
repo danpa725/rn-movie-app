@@ -1,17 +1,6 @@
 import { ThemeMode } from "@/utils/style/CustomeTheme"
 import styled from "styled-components/native"
 
-const ListContainer = styled.View`
-    margin-top: 20px;
-`
-const ListScrollContainer = styled.FlatList`
-    margin-top: 20px;
-
-    width: 100%;
-    height: 325px;
-
-    background: transparent;
-`
 //* Flat list로는 엘리먼트 사이 간격을 스타일링 하지 않아도 된다
 //*
 const ListBox = styled.View<ThemeMode>`
@@ -21,6 +10,9 @@ const ListBox = styled.View<ThemeMode>`
 
     width: 200px;
     height: 220px;
+
+    margin-top: 20px;
+    margin-bottom: 90px;
 
     background: ${({ isLight, theme }) =>
         isLight ? theme.trueDeepDark : theme.gray8};
@@ -61,8 +53,8 @@ const ListVote = styled.View`
 const ListNumebr = styled.Text`
     position: absolute;
 
-    top: 80px;
-    left: 125px;
+    top: 85px;
+    left: 127.5px;
 
     font-size: 115px;
     font-weight: 500;
@@ -72,14 +64,13 @@ const ListNumebr = styled.Text`
     text-shadow: 2px 3px 20px ${(props) => props.theme.gray8};
 `
 const TitleContainer = styled.View`
+    margin-top: 20px;
     margin-left: 20px;
 `
 
 export {
     ListBox,
-    ListContainer,
     ListBoxDivider,
-    ListScrollContainer,
     ListTitleContainer,
     ListNumebr,
     ListVote,
