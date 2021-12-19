@@ -6,6 +6,8 @@ import { Ionicons } from "@expo/vector-icons"
 
 import pallete from "@utils/style/pallete"
 
+import useLoadingState from "@/hooks/useLoadingState"
+
 import {
     useTvAiringToday,
     useTvTopRated,
@@ -18,27 +20,21 @@ import Loader from "@components/atoms/Loader/Loader"
 import TvHorizontalList from "./TvHorizontalList/TvHorizontalList"
 
 import { ScrollContainer } from "./TvScreen.style"
+import useRefetch from "@/hooks/useRefetch"
 
 function TvScreen() {
-    const queryClient = useQueryClient()
-
     const { data: trendingData, isLoading: isTrendingLoading } = useTvTrending()
     const { data: topRatedData, isLoading: isTopRatedLoading } = useTvTopRated()
     const { data: airingTodayData, isLoading: isAiringTodayLoading } =
         useTvAiringToday()
 
-    const [isLoading, setLoading] = useState<boolean>(true)
-    useEffect(() => {
-        if (!isTopRatedLoading && !isTrendingLoading && !isAiringTodayLoading)
-            setLoading(false)
-    }, [isTopRatedLoading, isAiringTodayLoading, isTrendingLoading])
+    const isLoading = useLoadingState([
+        isTrendingLoading,
+        isTopRatedLoading,
+        isAiringTodayLoading,
+    ])
 
-    const [refreshing, setRefreshing] = useState<boolean>(false)
-    const onRefresh = async () => {
-        setRefreshing(true)
-        await queryClient.refetchQueries([TV_CATEGORY])
-        setRefreshing(false)
-    }
+    const [isRefreshing, onRefresh] = useRefetch(TV_CATEGORY)
 
     if (!isLoading && trendingData && topRatedData && airingTodayData)
         return (
@@ -46,7 +42,7 @@ function TvScreen() {
                 showsVerticalScrollIndicator={false}
                 refreshControl={
                     <RefreshControl
-                        refreshing={refreshing}
+                        refreshing={isRefreshing}
                         onRefresh={onRefresh}
                     />
                 }

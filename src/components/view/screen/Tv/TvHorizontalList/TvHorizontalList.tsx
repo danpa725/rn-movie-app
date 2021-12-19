@@ -30,6 +30,8 @@ interface TvHorizontalListProps {
     title: string
 }
 
+const ITEM_HEIGHT = 300
+
 function TvHorizontalList({ tvData, Icon, title }: TvHorizontalListProps) {
     return (
         <SectionContainer>
@@ -46,7 +48,7 @@ function TvHorizontalList({ tvData, Icon, title }: TvHorizontalListProps) {
                 RenderElement={({ data }) => <TvScreenRender data={data} />}
                 keyExtractor={(item: any) => String(item.id)}
                 horizontal={true}
-                itemHeight={300}
+                itemHeight={ITEM_HEIGHT}
                 ItemSeparatorComponent={HorizontalSeperator}
                 contentContainerStyle={{
                     paddingHorizontal: 20,
