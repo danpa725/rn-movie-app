@@ -3,7 +3,7 @@ import { useColorScheme } from "react-native"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 
 import MovieScreen from "@components/view/screen/Movie/MovieScreen"
-import TrendScreen from "@components/view/screen/Trend/TrendScreen"
+import SearchScreen from "@components/view/screen/Search/SearchScreen"
 import TvScreen from "@components/view/screen/Tv/TvScreen"
 
 import { NAVIGATION_OPTIONS, SCREEN_OPTIONS } from "./Tab.style"
@@ -13,7 +13,7 @@ const TabNav = createBottomTabNavigator()
 const ROUTE_NAME = {
     MOVIE: "Movie",
     TV: "Tv",
-    TRENDS: "Trends",
+    SEARCH: "Search",
 }
 
 function Tab() {
@@ -45,8 +45,8 @@ function Tab() {
                 }
             />
             <TabNav.Screen
-                name={ROUTE_NAME.TRENDS}
-                component={TrendScreen}
+                name={ROUTE_NAME.SEARCH}
+                component={SearchScreen}
                 options={
                     isLight
                         ? SCREEN_OPTIONS.trending.light

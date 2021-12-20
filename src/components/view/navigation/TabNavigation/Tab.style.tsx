@@ -115,7 +115,7 @@ const SCREEN_OPTIONS: ScreenOptions = {
         light: {
             tabBarIcon: ({ color, size, focused }) => (
                 <Ionicons
-                    name="trending-up"
+                    name="search"
                     size={!focused ? size : size * ICON_ACTIVE_SCALE}
                     color={color}
                 />
@@ -124,7 +124,7 @@ const SCREEN_OPTIONS: ScreenOptions = {
         dark: {
             tabBarIcon: ({ color, size, focused }) => (
                 <Ionicons
-                    name="trending-up"
+                    name="search"
                     size={!focused ? size : size * ICON_ACTIVE_SCALE}
                     color={color}
                 />
